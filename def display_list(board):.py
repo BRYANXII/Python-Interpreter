@@ -23,7 +23,7 @@ def player_input():
             user1_input.apppend()
 player_input()
 
-def test_func(github):
-   print('I made this func in github')
+# def test_func():
+ #  print('I made this func in github')
    
-test_func(github)
+# test_func()
