@@ -1,10 +1,10 @@
-def display_list(board):
+def display_list():
    test_board= [['']*3,
 ['']*3,
 ['']*3]
-    print(test_board[0])
-    print(test_board[1])
-    print(test_board[2])
+   print(test_board[0])
+   print(test_board[1])
+   print(test_board[2])
    # top_row = ['']*3
    # mid_row = ['']*3
    # bottom_row = ['']*3
@@ -12,7 +12,7 @@ def display_list(board):
    # print(mid_row)
    # print(bottom_row)
 
-display_list(board)
+display_list()
 
 def player_input():
     user1_input = input('Select either X or O to begin: ') #append? 
@@ -23,7 +23,7 @@ def player_input():
             user1_input.apppend()
 player_input()
 
-# def test_func():
+#def test_func():
  #  print('I made this func in github')
    
 # test_func()
