@@ -22,3 +22,8 @@ def player_input():
     if user1_input == input_options[0] or input_options[1]:
             user1_input.apppend()
 player_input()
+
+def test_func(github):
+   print('I made this func in github')
+   
+test_func(github)
