@@ -23,13 +23,28 @@ def playerInput(board):
         print('Please select a valid input of 1-9!')
     else: 
         print('Oops spot already taken!')
+        
+# game running 
 
 while gameRunning:
     display_list(board)
     playerInput(board)
-    
+
+# checking for winner in all directions
+
 def checkHorizontal:
 	global winner 
     if board[0]=board[1]=board[2] and board[1] != '-':
     	winner = board[0]
         return True 
+        
+        
+def checkRow(board):
+	global winner
+    
+def checkDiagonal(board):
+	global winner
+    if board
+    
+#Switch Player
+	def playerSwitch(board):
