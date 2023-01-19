@@ -43,7 +43,7 @@ def player_input():
     elif user1_input == input_options:
             print('You are now {user1_input}, ready to begin?')
             user1_input.append(player_1)
-      else:
+    else:
          print('Please choose either X or O to begin')
    
 player_input()
