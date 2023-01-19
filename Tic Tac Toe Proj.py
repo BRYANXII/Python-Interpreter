@@ -27,3 +27,9 @@ def playerInput(board):
 while gameRunning:
     display_list(board)
     playerInput(board)
+    
+def checkHorizontal:
+	global winner 
+    if board[0]=board[1]=board[2] and board[1] != '-':
+    	winner = board[0]
+        return True 
