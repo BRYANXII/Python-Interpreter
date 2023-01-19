@@ -26,23 +26,30 @@ def playerInput(board):
         
 # game running 
 
-while gameRunning:
-    display_list(board)
-    playerInput(board)
+#while gameRunning:
+    #display_list(board)
+    #playerInput(board)
 
 # checking for winner in all directions
 
 def checkHorizontal(board):
     global winner
     if board[0] == board[1] == board[2] and board[1] != '-':
-        winner == board[0]
-        return True 
+        winner = board[0]
+        return True and print({winner} ('has won!'))
     if board[3] == board[4] == board[5] and board[4] != '-':
         winner = board[3]
         return True
     if board[6] == board[7] == board[8] and board[7] != '-':
         winner = board[6]
         return True
+
+# game check 
+
+while gameRunning:
+    display_list(board)
+    playerInput(board)
+    checkHorizontal(board)
         
         
 def checkRow(board):
