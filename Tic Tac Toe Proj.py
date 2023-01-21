@@ -7,14 +7,12 @@ gameRunning = True
 
 # print the game board 
 
-def display_list(board):
+def printBoard(board):
     print(board[0]+ '|' +  board[1] + '|' + board[2])
     print('-'*5)
     print(board[3]+ '|' +  board[4] + '|' + board[5])
     print('-'*5)
     print(board[6]+ '|' + board[7] + '|' + board[8])
-
-display_list(board)
 
 # take player input 
 def playerInput(board):
@@ -26,11 +24,6 @@ def playerInput(board):
     else: 
         print('Oops! Spot already taken!')
         
-# game running 
-
-#while gameRunning:
-    #display_list(board)
-    #playerInput(board)
 
 # checking for winner in all directions
 
@@ -81,8 +74,7 @@ def checkTie(board):
 def checkWin():
     global gameRunning
     if checkDiagonal(board) or checkHorizontal(board) or checkRow(board):
-        print(f'{winner} has won!')
-        gameRunning = False 
+        print(f'{winner} has won!') 
 
 # Alternate Player
 
@@ -92,10 +84,23 @@ def switchPlayer():
         currentPlayer = 'O'
     else:
         currentPlayer = 'X'
+
+# Play Again Prompt?
+
+"""""
+def playAgain():
+    prompt = input('Play again? Y or N: ')
+    while checkWin or checkTie == True:
+        print(prompt)
+        if prompt == 'Y':
+            break
+"""
+        
+
     
 
 while gameRunning:
-    display_list(board)
+    printBoard(board)
     playerInput(board)
     checkWin()
     checkTie(board)
