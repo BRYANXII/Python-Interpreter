@@ -22,7 +22,7 @@ def playerInput(board):
     elif inp not in range (1,10):
         print('Please select a valid input of 1-9!')
     else: 
-        print('Oops spot already taken!')
+        print('Oops! Spot already taken!')
         
 # game running 
 
@@ -32,11 +32,11 @@ def playerInput(board):
 
 # checking for winner in all directions
 
-def checkHorizontal(board):
+def checkHorizontal():
     global winner
     if board[0] == board[1] == board[2] and board[1] != '-':
         winner = board[0]
-        return True and print({winner} ('has won!'))
+        return True
     if board[3] == board[4] == board[5] and board[4] != '-':
         winner = board[3]
         return True
@@ -45,19 +45,49 @@ def checkHorizontal(board):
         return True
 
 # game check 
+        
+        
+def checkRow():
+    global winner
+    if board[0] == board[3] == board[6] and board[3] != '-':
+        winner = board[0]
+        return True
+    if board[1] == board[4] == board[7] and board[4] != '-':
+        winner = board[1]
+        return True
+    if board[2] == board[5] == board[8] and board[5] != '-':
+        winner = board[1]
+        return True
+    
+def checkDiagonal():
+    global winner
+    if board[0] == board[4] == board[5] and board[4] != '-':
+        winner = board[0]
+        return True
+    if board[2] == board[4] == board[6] and board[4] != '-':
+        winner = board[2]
+        return True
+
+# check for tie
+def checkTie():
+    if '-' not in board:
+        print('You tied!')
+
+# Alternate Player
+
+def switchPlayer():
+    global currentPlayer
+    if currentPlayer == 'X':
+        currentPlayer = 'O'
+    else:
+        currentPlayer = 'X'
+    
 
 while gameRunning:
     display_list(board)
     playerInput(board)
-    checkHorizontal(board)
-        
-        
-def checkRow(board):
-	global winner
-    
-def checkDiagonal(board):
-	global winner
-    if board
-    
-#Switch Player
-	def playerSwitch(board):
+    checkDiagonal()
+    checkHorizontal()
+    checkRow()
+    checkTie()
+    switchPlayer()
