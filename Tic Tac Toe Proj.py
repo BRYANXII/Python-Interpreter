@@ -34,7 +34,7 @@ def playerInput(board):
 
 # checking for winner in all directions
 
-def checkHorizontal():
+def checkHorizontal(board):
     global winner
     if board[0] == board[1] == board[2] and board[1] != '-':
         winner = board[0]
@@ -49,7 +49,7 @@ def checkHorizontal():
 # game check 
         
         
-def checkRow():
+def checkRow(board):
     global winner
     if board[0] == board[3] == board[6] and board[3] != '-':
         winner = board[0]
@@ -61,7 +61,7 @@ def checkRow():
         winner = board[1]
         return True
     
-def checkDiagonal():
+def checkDiagonal(board):
     global winner
     if board[0] == board[4] == board[5] and board[4] != '-':
         winner = board[0]
