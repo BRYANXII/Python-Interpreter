@@ -9,7 +9,9 @@ gameRunning = True
 
 def display_list(board):
     print(board[0]+ '|' +  board[1] + '|' + board[2])
+    print('-'*5)
     print(board[3]+ '|' +  board[4] + '|' + board[5])
+    print('-'*5)
     print(board[6]+ '|' + board[7] + '|' + board[8])
 
 display_list(board)
@@ -72,6 +74,12 @@ def checkDiagonal():
 def checkTie():
     if '-' not in board:
         print('You tied!')
+
+#def winCheck(board):
+    #checkRow(board)
+    #checkHorizontal(board)
+    #checkDiagonal(board)
+    #checkTie(board)
 
 # Alternate Player
 

@@ -39,12 +39,12 @@ def player_input():
     input_options = ['X','O']
     player_1 = []
     if user1_input not in input_options:
-            print('Please choose either X or O to begin')
+            print(f'Please choose either X or O to begin')
     elif user1_input == input_options:
-            print('You are now {user1_input}, ready to begin?')
+            print(f'You are now {user1_input}, ready to begin?')
             user1_input.append(player_1)
     else:
-         print('Please choose either X or O to begin')
+         print(f'Please choose either X or O to begin')
    
 player_input()
 
