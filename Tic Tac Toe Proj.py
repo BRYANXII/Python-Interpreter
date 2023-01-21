@@ -71,15 +71,18 @@ def checkDiagonal():
         return True
 
 # check for tie
-def checkTie():
+def checkTie(board):
+    global gameRunning
     if '-' not in board:
+        print(board)
         print('You tied!')
+        gameRunning = False
 
-#def winCheck(board):
-    #checkRow(board)
-    #checkHorizontal(board)
-    #checkDiagonal(board)
-    #checkTie(board)
+def checkWin():
+    global gameRunning
+    if checkDiagonal(board) or checkHorizontal(board) or checkRow(board):
+        print(f'{winner} has won!')
+        gameRunning = False 
 
 # Alternate Player
 
@@ -94,8 +97,6 @@ def switchPlayer():
 while gameRunning:
     display_list(board)
     playerInput(board)
-    checkDiagonal()
-    checkHorizontal()
-    checkRow()
-    checkTie()
+    checkWin()
+    checkTie(board)
     switchPlayer()
