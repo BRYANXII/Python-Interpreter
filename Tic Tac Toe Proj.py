@@ -8,11 +8,11 @@ gameRunning = True
 # print the game board 
 
 def printBoard(board):
-    print(board[0]+ '|' +  board[1] + '|' + board[2])
-    print('-'*5)
-    print(board[3]+ '|' +  board[4] + '|' + board[5])
-    print('-'*5)
-    print(board[6]+ '|' + board[7] + '|' + board[8])
+    print(board[0]+ ' | ' +  board[1] + ' | ' + board[2])
+    print('-'*9)
+    print(board[3]+ ' | ' +  board[4] + ' | ' + board[5])
+    print('-'*9)
+    print(board[6]+ ' | ' + board[7] + ' | ' + board[8])
 
 # take player input 
 def playerInput(board):
@@ -27,7 +27,7 @@ def playerInput(board):
 
 # checking for winner in all directions
 
-def checkHorizontal(board):
+def checkRow(board):
     global winner
     if board[0] == board[1] == board[2] and board[1] != '-':
         winner = board[0]
@@ -42,7 +42,7 @@ def checkHorizontal(board):
 # game check 
         
         
-def checkRow(board):
+def checkColumn(board):
     global winner
     if board[0] == board[3] == board[6] and board[3] != '-':
         winner = board[0]
@@ -67,14 +67,16 @@ def checkDiagonal(board):
 def checkTie(board):
     global gameRunning
     if '-' not in board:
-        print(board)
+        printBoard(board)
         print('You tied!')
         gameRunning = False
 
 def checkWin():
     global gameRunning
-    if checkDiagonal(board) or checkHorizontal(board) or checkRow(board):
+    if checkColumn(board) or checkDiagonal(board) or checkRow(board):
+        printBoard(board)
         print(f'{winner} has won!') 
+        gameRunning = False
 
 # Alternate Player
 
@@ -87,14 +89,20 @@ def switchPlayer():
 
 # Play Again Prompt?
 
-"""""
+
 def playAgain():
-    prompt = input('Play again? Y or N: ')
-    while checkWin or checkTie == True:
+    global gameRunning
+    if gameRunning == False:
+         prompt = input('Play again? Y or N: ')
+    while gameRunning == False:
+        printBoard(board)
         print(prompt)
         if prompt == 'Y':
+            gameRunning = True
+        else:
+            printBoard(board)
             break
-"""
+    
         
 
     
@@ -105,3 +113,4 @@ while gameRunning:
     checkWin()
     checkTie(board)
     switchPlayer()
+    playAgain()
