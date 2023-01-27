@@ -20,7 +20,7 @@ Hitting exactly 21 can mean even bigger winnings."""""
 welcome()
 # SUM OF FIRST TWO CARDS 
 def first_deal():
-
+    pass
 # GAME LOGIC
 def game_logic():
     global sum_player1
