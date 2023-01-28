@@ -1,10 +1,10 @@
 # MY OWN BLACKJACK GAME
 # Global Variable 
-
-player1 = None
+import random
+player1 = None #what is the need for sum and player1 values? 
 dealer = None
-sum_player1 = []
-sum_dealer = []
+card = [1,2,3,4,5,6,7,9,10] #test card values 
+
 
 # START GAME
 def welcome():
@@ -20,15 +20,17 @@ Hitting exactly 21 can mean even bigger winnings."""""
 welcome()
 # SUM OF FIRST TWO CARDS 
 def first_deal():
-    pass
+    
+    
 # GAME LOGIC
 def game_logic():
+    global card
     global sum_player1
     while sum_player1 >= 1 and sum_player1 <= 21:
         print(sum_player1)
         print(input('Hit? (Y or N): '))
         if input == 'Y':
-            print(sum_player1 + )   
+            print(sum_player1 + card)   
         else:
             print('BUSTED')
             break 
@@ -45,6 +47,7 @@ def game_logic():
 # DEALER SUM OF TWO CARDS OR MORE
 
 # DEALER BUST OR WIN 
+
 
 # WHO WON
 
