@@ -1,5 +1,3 @@
-# MY OWN BLACKJACK GAME
-# Global Variable 
 import random
 player1 = None #what is the need for sum and player1 values? 
 dealer = None
@@ -20,6 +18,7 @@ Hitting exactly 21 can mean even bigger winnings."""""
 welcome()
 # SUM OF FIRST TWO CARDS 
 def first_deal():
+    
     
     
 # GAME LOGIC
