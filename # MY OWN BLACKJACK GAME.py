@@ -16,9 +16,24 @@ Hitting exactly 21 can mean even bigger winnings."""""
     else:
         print(basics)
 welcome()
-# SUM OF FIRST TWO CARDS 
-def first_deal():
-    
+ 
+# Creating a Card Class
+class Cards():
+    import random
+    # Sum like this deck = (random.randint(1,10))*4
+    def __init__(self,suit,value,face):
+        self.suit = suit
+        self.value = value
+        self.face = face
+    def __str__(self):
+        print(f'{self.face} of {self.suit}(Value: {self.value})')
+
+class CardValue():
+    def __init__(self):
+        for self.suit in deck:
+            pass
+
+# First Deal   
     
     
 # GAME LOGIC
@@ -38,8 +53,11 @@ def game_logic():
 
 
 # HIT OR STAY 
-
+def hit_stay():
+    pass
 # BUST ?
+def bust_check():
+    pass
 
 # DEALER HIT OR STAY (MUST HIT SOFT 17)
 
