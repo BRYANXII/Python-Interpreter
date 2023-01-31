@@ -11,7 +11,7 @@ You can win if you don’t bust and your total is higher than the dealer cards.
 Hitting exactly 21 can mean even bigger winnings."""""
     print("Welcome to Black Jack!")
     show_rules =(input(f'Do you know how to play? (Y or N): '))
-    if show_rules == 'Y' or 'y':
+    if show_rules == 'Y': # or 'y' does not work!!
         print(f"Okay then, let's start!")
     else:
         print(basics)
@@ -30,8 +30,7 @@ class Cards():
 
 class CardValue():
     def __init__(self):
-        for self.suit in deck:
-            pass
+        pass
 
 # First Deal   
     
