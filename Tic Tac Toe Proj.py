@@ -20,10 +20,11 @@ def playerInput(board):
     if inp >= 1 and inp <= 9 and board[inp-1] == '-':
         board[inp-1] = currentPlayer
     elif inp not in range (1,10):
-        print('Please select a valid input of 1-9!')
-    else: 
-        print('Oops! Spot already taken!')
-        
+        print('{currentPlayer}, please select a valid input of 1-9!')
+        switchPlayer()
+    else:
+        switchPlayer()
+        print('Oops! Spot already taken! Try again')
 
 # checking for winner in all directions
 
@@ -100,6 +101,7 @@ def playAgain():
         if prompt == 'Y':
             gameRunning = True
         else:
+            gameRunning = False
             printBoard(board)
             break
     
