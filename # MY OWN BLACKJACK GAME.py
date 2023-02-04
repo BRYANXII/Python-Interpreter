@@ -21,16 +21,22 @@ welcome()
 class Cards():
     import random
     # Sum like this deck = (random.randint(1,10))*4
-    def __init__(self,suit,value,face):
+    def __init__(self,card,suit,value,face):
+        self.card = card
         self.suit = suit
         self.value = value
         self.face = face
     def __str__(self):
-        print(f'{self.face} of {self.suit}(Value: {self.value})')
+        print(f'{self.face} of {self.suit}]\n(Value: {self.value})')
+    def firstDeck(self,first_deck):
+        self.first_deck = first_deck
+        return self.suit and self.value
+    def faceValue(self,face_value):
+        self.face_value = face_value
+        for self.card in self.first_deck:
+            print (self.value " of ",)
 
-class CardValue():
-    def __init__(self):
-        pass
+        
 
 # First Deal   
     

@@ -1,10 +1,10 @@
-currentPlayer = 'X'
 winner = None
 gameRunning = True
-def main(board):  
-    board = ['-','-','-',
+currentPlayer = 'X'
+board = ['-','-','-',
     '-','-','-',
     '-','-','-']
+def Board(board):  
     print(board[0]+ ' | ' +  board[1] + ' | ' + board[2])
     print('-'*9)
     print(board[3]+ ' | ' +  board[4] + ' | ' + board[5])
@@ -21,8 +21,10 @@ def playerInput(board):
         board[inp-1] = currentPlayer
     elif inp not in range (1,10):
         print('Please select a valid input of 1-9!')
+        switchPlayer()
     else: 
         print('Oops! Spot already taken!')
+        switchPlayer()
         
 
 # checking for winner in all directions
@@ -74,7 +76,7 @@ def checkTie(board):
 def checkWin():
     global gameRunning
     if checkColumn(board) or checkDiagonal(board) or checkRow(board):
-        printBoard(board)
+        print (board)
         print(f'{winner} has won!') 
         gameRunning = False
 
@@ -108,7 +110,7 @@ def playAgain():
     
 
 while gameRunning:
-    main()
+    Board(board)
     playerInput(board)
     checkWin()
     checkTie(board)
