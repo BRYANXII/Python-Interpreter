@@ -1,8 +1,7 @@
 import random
-player1 = None #what is the need for sum and player1 values? 
-dealer = None
-card = [1,2,3,4,5,6,7,9,10] #test card values 
-
+suits = ('Hearts', 'Diamons', ' Spades', 'Clubs') #has to be created as a global variable 
+ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
+values = {'Two':2, 'Three':3, 'Four':4, 'Five': 5, 'Six':6, 'Seven': 7, 'Eight': 8, 'Nine': 9, 'Ten':10, 'Jack':11, 'Queen':12, 'King': 13, 'Ace': 14}
 
 # START GAME
 def welcome():
@@ -19,25 +18,70 @@ welcome()
  
 # Creating a Card Class
 class Cards():
-    import random
     # Sum like this deck = (random.randint(1,10))*4
-    def __init__(self,card,suit,value,face):
-        self.card = card
-        self.suit = suit
-        self.value = value
-        self.face = face
+    def __init__(self,ranks,suits,values):
+        self.ranks = ranks
+        self.suits = suits
+        self.values = values
     def __str__(self):
-        print(f'{self.face} of {self.suit}]\n(Value: {self.value})')
-    def firstDeck(self,first_deck):
-        self.first_deck = first_deck
-        return self.suit and self.value
-    def faceValue(self,face_value):
-        self.face_value = face_value
-        for self.card in self.first_deck:
-            print (self.value " of ",)
+        print(f'{self.rank} of {self.suit}')
+
+class Deck():
+
+    def __init__(self):
+        
+        self.deck_of_cards = []
+
+        for suit in suits:
+            for rank in ranks:
+                created_card = Deck(suit,rank)
+                self.deck_of_cards.append(created_card)
+
+    def shuffle(self):
+        random.shuffle(self.deck_of_cards)
+
+    def deal_one(self):
+
+        return self.deck_of_cards.pop(0) #NEED TO RETURN
+
+# CREATING PLAYER CLASS
+
+class Player():
+
+    def __init__(self,name):
+        self.name = name
+        self.player_cards = []
+        
+    def remove_one(self): #probably won't need for black jack???
+        return self.player_cards.pop(0)
+
+    def add_cards(self,new_cards):
+
+        self.player_cards.append(new_cards)
+
+    def player_score(self):
+        return self.player_cards.sum() # IDK IF THIS WILL WORK
+
+        #find a way to add cards values together 
+
+    def __str__(self):
+        return f"Player Score: {self.player_cards.sum()}" # want to display sum for player 
+
+
+# Create Dealer Class
+
+class Dealer():
+
+    def __init__(self,dealer_sum):
+        self.dealer_cards = []
+        self.dealer_sum = dealer_sum.sum(self.dealercards)
+    def __str__(self):
+        return f"Dealer Score: {self.dealer_sum}"
 
         
+new_player = Player("Bryan")
 
+print(new_player)
 # First Deal   
     
     
