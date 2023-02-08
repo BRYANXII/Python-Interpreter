@@ -60,59 +60,100 @@ class Player():
         self.player_cards.append(new_cards)
 
     def player_score(self):
-        return self.player_cards.sum() # IDK IF THIS WILL WORK
+        return sum(self.player_cards) # IDK IF THIS WILL WORK
 
         #find a way to add cards values together 
 
     def __str__(self):
-        return f"Player Score: {self.player_cards.sum()}" # want to display sum for player 
+        return f"Player Score: test" # want to display sum for player 
 
 
 # Create Dealer Class
 
 class Dealer():
 
-    def __init__(self,dealer_sum):
+    def __init__(self,dealer_name):
+        self.dealer_name = dealer_name
         self.dealer_cards = []
-        self.dealer_sum = dealer_sum.sum(self.dealercards)
     def __str__(self):
-        return f"Dealer Score: {self.dealer_sum}"
+        return f"Dealer Score: {self.dealer_cards.sum()}"
 
+dealer_one = Dealer("Johnny Sins (Dealer)")
+player_one = Player("Bryan")
+
+print(player_one)
+print(dealer_one)
+
+# CHIPS and BET SIZES
+
+class Chips():
+
+    def __init__(self,chip,bet_size,bank_roll):
         
-new_player = Player("Bryan")
+        self.chip = chip
+        self.bet_size = bet_size
+        self.bank_roll = bank_roll
 
-print(new_player)
-# First Deal   
+    def bet_ammount(self):
+        pass
+
+    def __str__(self):
+        return (f"Player Bet Size: {self.bet_size}")
+
+
+# Shuffle Deck and set game_on to True
+
+new_deck = Deck()
+new_deck.shuffle()
+
+game_on = True
+
+# BET AMMOUNT
+
+def initial_bet():
+    bet_ammount = input(int("Place your bet your bets! (minimum $5)\nBet ammount?: "))
     
+    while:
+
+        if bet_ammount >= 5 and bet_ammount <= bank_roll:
+            break
     
-# GAME LOGIC
-def game_logic():
-    global card
-    global sum_player1
-    while sum_player1 >= 1 and sum_player1 <= 21:
-        print(sum_player1)
-        print(input('Hit? (Y or N): '))
-        if input == 'Y':
-            print(sum_player1 + card)   
         else:
-            print('BUSTED')
-            break 
-    
-# SUM OF DEALERS FIRST CARD
+            print("Please select a bet size greater than $5: ")
+            continue
+
+# GAME LOGIC
+
+while game_on:
+    if player_one bet_size > 0:
+        player_cards.append(new_deck.deal_one()) # trying to deal first card to player
 
 
-# HIT OR STAY 
-def hit_stay():
-    pass
-# BUST ?
-def bust_check():
-    pass
 
-# DEALER HIT OR STAY (MUST HIT SOFT 17)
+    # BET SIZE
 
-# DEALER SUM OF TWO CARDS OR MORE
 
-# DEALER BUST OR WIN 
+    # FIRST DEAL
+
+
+    # SUM OF DEALERS FIRST CARD
+
+
+    # HIT OR STAY 
+
+
+    # DEALER SUM
+
+
+    # DEALER HIT OR STAY (MUST HIT SOFT 17)
+
+
+    # DEALER BUST OR WIN
+
+
+    # PUSH
+
+
 
 
 # WHO WON
