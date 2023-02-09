@@ -23,11 +23,11 @@ def playerInput(board):
     if inp >= 1 and inp <= 9 and board[inp-1] == '-':
         board[inp-1] = currentPlayer
     elif inp not in range (1,10):
-        print('{currentPlayer}, please select a valid input of 1-9!')
+        print(f"Please select a valid input of 1-9!")
         switchPlayer()
     else:
         switchPlayer()
-        print('Oops! Spot already taken! Try again')
+        print(f"Oops! Spot is already taken! Try again!")
 
 # checking for winner in all directions
 
@@ -81,7 +81,6 @@ def checkWin():
         printBoard(board)
         print(f'{winner} has won!') 
         gameRunning = False
-
 # Alternate Player
 
 def switchPlayer():
@@ -111,9 +110,10 @@ def playAgain():
         
 
     
+print("Welcome to Tic Tac Toe! \nPlayer 1 will be 'X', Player 2 will by 'O'")
+print("Numbers 1-9 Correspond to a place on the board.\nExample: Top Left Corner is 1, Top Middle is 2, Top Right Corner is 3, etc.")
 
 while gameRunning:
-    intro()
     printBoard(board)
     playerInput(board)
     checkWin()
