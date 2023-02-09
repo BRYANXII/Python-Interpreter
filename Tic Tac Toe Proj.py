@@ -6,6 +6,9 @@ winner = None
 gameRunning = True
 
 # print the game board 
+def intro():
+    print("Welcome to Tic Tac Toe! \nPlayer 1 will be 'X', Player 2 will by 'O'")
+    print("Numbers 1-9 Correspond to a place on the board.\nExample: Top Left Corner is 1, Top Middle is 2, Top Right Corner is 3, etc.")
 
 def printBoard(board):
     print(board[0]+ ' | ' +  board[1] + ' | ' + board[2])
@@ -110,6 +113,7 @@ def playAgain():
     
 
 while gameRunning:
+    intro()
     printBoard(board)
     playerInput(board)
     checkWin()

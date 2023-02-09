@@ -48,9 +48,15 @@ class Deck():
 
 class Player():
 
-    def __init__(self,name):
+    def __init__(self,name,bank_roll):
         self.name = name
+        self.bank_roll = bank_roll
         self.player_cards = []
+    
+    def bet_ammount(self,bet):
+        self.bet = bet
+
+        return f"{self.name} has bet {self.bet} \n Current Bankroll:{self.bank_roll-self.bet}"
         
     def remove_one(self): #probably won't need for black jack???
         return self.player_cards.pop(0)
@@ -65,7 +71,7 @@ class Player():
         #find a way to add cards values together 
 
     def __str__(self):
-        return f"Player Score: test" # want to display sum for player 
+        return f"{self.name} has ${self.bank_roll}" # want to display sum for player 
 
 
 # Create Dealer Class
@@ -76,10 +82,10 @@ class Dealer():
         self.dealer_name = dealer_name
         self.dealer_cards = []
     def __str__(self):
-        return f"Dealer Score: {self.dealer_cards.sum()}"
+        return f"Dealer: {self.dealer_name}"
 
-dealer_one = Dealer("Johnny Sins (Dealer)")
-player_one = Player("Bryan")
+dealer_one = Dealer("Johnny Sins")
+player_one = Player("Bryan",200)
 
 print(player_one)
 print(dealer_one)
@@ -88,14 +94,10 @@ print(dealer_one)
 
 class Chips():
 
-    def __init__(self,chip,bet_size,bank_roll):
+    def __init__(self,chip,bet_size):
         
         self.chip = chip
         self.bet_size = bet_size
-        self.bank_roll = bank_roll
-
-    def bet_ammount(self):
-        pass
 
     def __str__(self):
         return (f"Player Bet Size: {self.bet_size}")
@@ -113,14 +115,12 @@ game_on = True
 def initial_bet():
     bet_ammount = input(int("Place your bet your bets! (minimum $5)\nBet ammount?: "))
     
-    while:
-
-        if bet_ammount >= 5 and bet_ammount <= bank_roll:
-            break
+    if bet_ammount >= 5:
+            print('Your bet size is {bet_ammount}')
     
-        else:
+    else:
             print("Please select a bet size greater than $5: ")
-            continue
+            
 
 # GAME LOGIC
 
