@@ -1,7 +1,8 @@
 import random
-suits = ('Hearts', 'Diamons', ' Spades', 'Clubs') #has to be created as a global variable 
+suits = ["Spades","Hearts","Clubs","Diamonds" ]
+suit_values = {"Spades":"\u2664", "Hearts":"\u2661", "Clubs": "\u2667", "Diamonds": "\u2662"} #has to be created as a global variable 
 ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
-values = {'Two':2, 'Three':3, 'Four':4, 'Five': 5, 'Six':6, 'Seven': 7, 'Eight': 8, 'Nine': 9, 'Ten':10, 'Jack':11, 'Queen':12, 'King': 13, 'Ace': 14}
+rank_values = {'Two':2, 'Three':3, 'Four':4, 'Five': 5, 'Six':6, 'Seven': 7, 'Eight': 8, 'Nine': 9, 'Ten':10, 'Jack':11, 'Queen':12, 'King': 13, 'Ace': 14}
 
 # START GAME
 def welcome():
@@ -19,12 +20,13 @@ welcome()
 # Creating a Card Class
 class Cards():
     # Sum like this deck = (random.randint(1,10))*4
-    def __init__(self,ranks,suits,values):
+    def __init__(self,ranks,suits,suit_values,rank_values):
         self.ranks = ranks
         self.suits = suits
-        self.values = values
+        self.suit_values = suit_values
+        self.rank_values = rank_values
     def __str__(self):
-        print(f'{self.rank} of {self.suit}')
+        print(f'{self.rank} of {self.suits}')
 
 class Deck():
 
@@ -53,10 +55,18 @@ class Player():
         self.bank_roll = bank_roll
         self.player_cards = []
     
-    def bet_ammount(self,bet):
-        self.bet = bet
-
-        return f"{self.name} has bet {self.bet} \n Current Bankroll:{self.bank_roll-self.bet}"
+    def bet_ammount(self):
+        while True:
+            try:
+                self.bet = int(input("Place you bet ammount: "))
+                if self.bet > self.bank_roll:
+                    print('Cannot bet more than your current bank roll.')
+                elif self.bet <= self.bank_roll:
+                    print(f"{self.name} has bet {self.bet} \nCurrent Bankroll:{self.bank_roll-self.bet}")
+                    return self.bank_roll - self.bet # not sure if this works?
+            except:
+                print('Please select a valid input. Must be a numberical value')
+                continue
         
     def remove_one(self): #probably won't need for black jack???
         return self.player_cards.pop(0)
@@ -73,6 +83,9 @@ class Player():
     def __str__(self):
         return f"{self.name} has ${self.bank_roll}" # want to display sum for player 
 
+    def chips(self):
+        pass
+
 
 # Create Dealer Class
 
@@ -83,16 +96,18 @@ class Dealer():
         self.dealer_cards = []
     def __str__(self):
         return f"Dealer: {self.dealer_name}"
+    
 
 dealer_one = Dealer("Johnny Sins")
 player_one = Player("Bryan",200)
 
 print(player_one)
 print(dealer_one)
+player_one.bet_ammount()
 
 # CHIPS and BET SIZES
 
-class Chips():
+'''class Chips():
 
     def __init__(self,chip,bet_size):
         
@@ -126,7 +141,7 @@ def initial_bet():
 
 while game_on:
     if player_one bet_size > 0:
-        player_cards.append(new_deck.deal_one()) # trying to deal first card to player
+        player_cards.append(new_deck.deal_one()) # trying to deal first card to player'''
 
 
 
