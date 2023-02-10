@@ -2,7 +2,7 @@ import random
 suits = ["Spades","Hearts","Clubs","Diamonds" ]
 suit_values = {"Spades":"\u2664", "Hearts":"\u2661", "Clubs": "\u2667", "Diamonds": "\u2662"} #has to be created as a global variable 
 ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
-rank_values = {'Two':2, 'Three':3, 'Four':4, 'Five': 5, 'Six':6, 'Seven': 7, 'Eight': 8, 'Nine': 9, 'Ten':10, 'Jack':11, 'Queen':12, 'King': 13, 'Ace': 14}
+card_values = {'Two':2, 'Three':3, 'Four':4, 'Five': 5, 'Six':6, 'Seven': 7, 'Eight': 8, 'Nine': 9, 'Ten':10, 'Jack':11, 'Queen':12, 'King': 13, 'Ace': 14}
 
 # START GAME
 def welcome():
@@ -20,13 +20,13 @@ welcome()
 # Creating a Card Class
 class Cards():
     # Sum like this deck = (random.randint(1,10))*4
-    def __init__(self,ranks,suits,suit_values,rank_values):
+    def __init__(self,ranks,suits,suit_values,card_values):
         self.ranks = ranks
         self.suits = suits
         self.suit_values = suit_values
-        self.rank_values = rank_values
+        self.card_values = card_values
     def __str__(self):
-        print(f'{self.rank} of {self.suits}')
+        print(f'{self.ranks} of {self.suits}')
 
 class Deck():
 
@@ -134,20 +134,39 @@ def initial_bet():
             print('Your bet size is {bet_ammount}')
     
     else:
-            print("Please select a bet size greater than $5: ")
-            
+            print("Please select a bet size greater than $5: ") '''
+# how do I integrate the bet before the game begins??
+
 
 # GAME LOGIC
 
-while game_on:
-    if player_one bet_size > 0:
-        player_cards.append(new_deck.deal_one()) # trying to deal first card to player'''
+def game_on():
+    
+    player_cards = []
+    dealer_cards = []
+    player_score = []
+    dealer_score = []
 
 
 
-    # BET SIZE
+    while len(playe_cards) > 2:
+        
+        pass
+
+        #start dealing cards to player here 
 
 
+
+        if len(player_cards) == 2:
+            pass
+
+            # player now has two cards
+
+
+
+
+
+        
     # FIRST DEAL
 
 
