@@ -104,6 +104,9 @@ player_one = Player("Bryan",200)
 print(player_one)
 print(dealer_one)
 player_one.bet_ammount()
+new_deck = Deck()
+new_deck.shuffle()
+print (new_deck[0])
 
 # CHIPS and BET SIZES
 
@@ -149,21 +152,21 @@ def game_on():
 
 
 
-    while len(playe_cards) > 2:
-        
-        pass
+    while len(player_cards) > 2:
+        player_cards = player_one.add_cards()
 
         #start dealing cards to player here 
 
-
+        input()
 
         if len(player_cards) == 2:
-            pass
+            print("Hit or Stay?")
+
 
             # player now has two cards
 
 
-
+game_on()
 
 
         
