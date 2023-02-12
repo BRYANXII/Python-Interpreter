@@ -1,14 +1,13 @@
 import random
-suits = ["Spades","Hearts","Clubs","Diamonds" ]
-suit_values = {"Spades":"\u2664", "Hearts":"\u2661", "Clubs": "\u2667", "Diamonds": "\u2662"} #has to be created as a global variable 
+#suit_values = {"Spades":"\u2664", "Hearts":"\u2661", "Clubs": "\u2667", "Diamonds": "\u2662"} #has to be created as a global variable 
+suits = ('Hearts', 'Diamons', ' Spades', 'Clubs') #has to be created as a global variable 
 ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
-card_values = {'Two':2, 'Three':3, 'Four':4, 'Five': 5, 'Six':6, 'Seven': 7, 'Eight': 8, 'Nine': 9, 'Ten':10, 'Jack':11, 'Queen':12, 'King': 13, 'Ace': 14}
-
+values = {'Two':2, 'Three':3, 'Four':4, 'Five': 5, 'Six':6, 'Seven': 7, 'Eight': 8, 'Nine': 9, 'Ten':10, 'Jack':11, 'Queen':12, 'King': 13, 'Ace': 14}
 # START GAME
 def welcome():
     basics = """In blackjack, players attempt to reach a score of 21—without exceeding it—before the dealer hits 17. 
 You can win if you don’t bust and your total is higher than the dealer cards. 
-Hitting exactly 21 can mean even bigger winnings."""""
+Hitting exactly 21 can mean even bigger winnings."""
     print("Welcome to Black Jack!")
     show_rules =(input(f'Do you know how to play? (Y or N): '))
     if show_rules == 'Y': # or 'y' does not work!!
@@ -20,13 +19,13 @@ welcome()
 # Creating a Card Class
 class Cards():
     # Sum like this deck = (random.randint(1,10))*4
-    def __init__(self,ranks,suits,suit_values,card_values):
-        self.ranks = ranks
-        self.suits = suits
-        self.suit_values = suit_values
-        self.card_values = card_values
+    def __init__(self,suit,rank):
+        self.suit = suit
+        self.rank = rank
+        self.value = values[rank]
+        
     def __str__(self):
-        print(f'{self.ranks} of {self.suits}')
+        return (f'{self.rank} of {self.suit}') # had print() instead of return. printing deck was calling printing memory location of it
 
 class Deck():
 
@@ -36,15 +35,20 @@ class Deck():
 
         for suit in suits:
             for rank in ranks:
-                created_card = Deck(suit,rank)
+                created_card = Cards(suit,rank) #I was calling Deck() for the append instead of Card() for created obj
                 self.deck_of_cards.append(created_card)
-
     def shuffle(self):
         random.shuffle(self.deck_of_cards)
 
     def deal_one(self):
+        if len(self.deck_of_cards) > 0:
+            return self.deck_of_cards.pop() #NEED TO RETURN
+        else:
+            print("List is still empty")
 
-        return self.deck_of_cards.pop(0) #NEED TO RETURN
+    def __str__(self):
+        print("test")
+        
 
 # CREATING PLAYER CLASS
 
@@ -106,7 +110,12 @@ print(dealer_one)
 player_one.bet_ammount()
 new_deck = Deck()
 new_deck.shuffle()
-print (new_deck[0])
+#print(new_deck) # currently printing the location of new_deck but not the list of it
+
+'''for x in range (51): # had this at 53 so pop() was not working. Type Error: pop() from empty list (self.deck_of_cards)
+    player_one.add_cards(new_deck.deal_one())
+
+print(new_deck)'''
 
 # CHIPS and BET SIZES
 
@@ -160,7 +169,14 @@ def game_on():
         input()
 
         if len(player_cards) == 2:
-            print("Hit or Stay?")
+
+            h_or_s = input("Hit or Stay?")
+
+            if h_or_s == "H":
+                player_cards = player_one.add_cards()
+
+            else:
+                break #idk if break should be used here 
 
 
             # player now has two cards
