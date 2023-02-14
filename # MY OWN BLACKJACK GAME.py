@@ -1,4 +1,5 @@
 import random
+import os
 #suit_values = {"Spades":"\u2664", "Hearts":"\u2661", "Clubs": "\u2667", "Diamonds": "\u2662"} #has to be created as a global variable 
 suits = ('Hearts', 'Diamons', ' Spades', 'Clubs') #has to be created as a global variable 
 ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
@@ -43,6 +44,7 @@ class Deck():
     def deal_one(self):
         if len(self.deck_of_cards) > 0:
             return self.deck_of_cards.pop() #NEED TO RETURN
+            # The argument passed to the method is optional. If not passed, the default index -1 is passed as an argument (index of the last item).
         else:
             print("List is still empty")
 
@@ -58,7 +60,7 @@ class Player():
         self.name = name
         self.bank_roll = bank_roll
         self.player_cards = []
-    
+
     def bet_ammount(self):
         while True:
             try:
@@ -98,6 +100,8 @@ class Dealer():
     def __init__(self,dealer_name):
         self.dealer_name = dealer_name
         self.dealer_cards = []
+
+
     def __str__(self):
         return f"Dealer: {self.dealer_name}"
     
@@ -161,22 +165,29 @@ def game_on():
 
 
 
-    while len(player_cards) > 2:
-        player_cards = player_one.add_cards()
+    while len(player_cards) < 2:
+        player_cards = player_cards.append(new_deck.deal_one())
+
+        
 
         #start dealing cards to player here 
 
         input()
 
         if len(player_cards) == 2:
+            pass
 
-            h_or_s = input("Hit or Stay?")
+            while h_or_s == "H":
 
-            if h_or_s == "H":
                 player_cards = player_one.add_cards()
+                player_score = player_cards.sum()
+                print(player_score)
 
             else:
-                break #idk if break should be used here 
+                player_score = player_cards.sum()
+                print(player_score)
+                 #idk if break should be used here 
+
 
 
             # player now has two cards
