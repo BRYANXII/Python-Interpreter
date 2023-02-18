@@ -42,14 +42,16 @@ class Deck():
         random.shuffle(self.deck_of_cards)
 
     def deal_one(self):
-        if len(self.deck_of_cards) > 0:
-            return self.deck_of_cards.pop() #NEED TO RETURN
+
+        return self.deck_of_cards.pop() #NEED TO RETURN
             # The argument passed to the method is optional. If not passed, the default index -1 is passed as an argument (index of the last item).
-        else:
-            print("List is still empty")
 
     def __str__(self):
-        print("test")
+
+        deck_comp = ''  # start with an empty string
+        for card in self.deck_of_cards:
+            deck_comp += '\n '+card.__str__() # add each Card object's print string
+        return 'The deck has:' + deck_comp
         
 
 # CREATING PLAYER CLASS
@@ -60,6 +62,7 @@ class Player():
         self.name = name
         self.bank_roll = bank_roll
         self.player_cards = []
+        self.player_score = ""
 
     def bet_ammount(self):
         while True:
@@ -81,8 +84,9 @@ class Player():
 
         self.player_cards.append(new_cards)
 
-    def player_score(self):
-        return sum(self.player_cards) # IDK IF THIS WILL WORK
+    def score(self):
+         
+        self.player_score += card.value # IDK IF THIS WILL WORK
 
         #find a way to add cards values together 
 
@@ -111,9 +115,16 @@ player_one = Player("Bryan",200)
 
 print(player_one)
 print(dealer_one)
-player_one.bet_ammount()
+#player_one.bet_ammount()
 new_deck = Deck()
 new_deck.shuffle()
+print (new_deck)
+player_one_cards = []
+while len(player_one_cards) < 2:
+    player_one_cards += new_deck.deal_one()
+    break
+
+print(player_one_cards)
 #print(new_deck) # currently printing the location of new_deck but not the list of it
 
 '''for x in range (51): # had this at 53 so pop() was not working. Type Error: pop() from empty list (self.deck_of_cards)
@@ -156,7 +167,7 @@ def initial_bet():
 
 # GAME LOGIC
 
-def game_on():
+'''def game_on():
     
     player_cards = []
     dealer_cards = []
@@ -164,36 +175,26 @@ def game_on():
     dealer_score = []
 
 
-
     while len(player_cards) < 2:
-        player_cards = player_cards.append(new_deck.deal_one())
-
-        
-
+        player_cards.append(new_deck.deal_one())
+    
         #start dealing cards to player here 
 
         input()
 
         if len(player_cards) == 2:
-            pass
+            print(player_cards)
+            break
+            
 
-            while h_or_s == "H":
-
-                player_cards = player_one.add_cards()
-                player_score = player_cards.sum()
-                print(player_score)
-
-            else:
-                player_score = player_cards.sum()
-                print(player_score)
-                 #idk if break should be used here 
+        break
 
 
 
             # player now has two cards
 
 
-game_on()
+game_on()'''
 
 
         
