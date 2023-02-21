@@ -1,6 +1,7 @@
 import random
 import os
 import time
+playing = True
  
 # The Card class definition
 class Card:
@@ -129,23 +130,69 @@ def print_cards(cards, hidden):
  
     print()
  
+def welcome():
+
+    print('Welcome to Black Jack!')
+
+class Chips:
+    
+    def __init__(self):
+        self.total = 100  # This can be set to a default value or supplied by a user input
+        self.bet = 0
+        
+    def win_bet(self):
+        self.total += self.bet
+        print (f"You've won {self.bet*2}! You're new total is {self.total}")
+    
+    def lose_bet(self):
+        self.total -= self.bet
+        print (f"You've lost {self.bet}, you're new total is {self.total}")
+    
+    def take_bet(chips):
+    
+        while True:
+                print(f"Current Bank Roll: {chips.total}")
+                try:
+                    chips.bet = int(input("How many chips would you like to bet? "))
+                except: 
+                    print("Sorry please provide an interger")
+                else:
+                    if chips.bet > chips.total:
+                        print(f"Sorry, you do not have enough chips! You have {chips.total}")
+                    else:
+                        break #breaks out of while loop
+
+def game_on():
+    global playing
+    while playing == True:
+            new_game = input("would you like to play again? Enter Y or N:")
+
+            if new_game[0].lower() == "y":
+                playing = True
+                continue
+            else:
+                print('Thank you for playing!')
+                break 
  
 # Function for a single game of blackjack
 def blackjack_game(deck):
- 
+
     # Cards for both dealer and player
     player_cards = []
     dealer_cards = []
  
     # Scores for both dealer and player
+    player_chips = Chips()
     player_score = 0
     dealer_score = 0
  
     clear()
- 
+    welcome()
+    player_chips.take_bet()
+    
+
     # Initial dealing for player and dealer
     while len(player_cards) < 2:
- 
         # Randomly dealing a card
         player_card = random.choice(deck)
         player_cards.append(player_card)
@@ -196,8 +243,8 @@ def blackjack_game(deck):
     # Player gets a blackjack   
     if player_score == 21:
         print("PLAYER HAS A BLACKJACK!!!!")
-        print("PLAYER WINS!!!!")
-        quit()
+        player_chips.win_bet()
+        game_on()
  
     clear()
  
@@ -277,12 +324,14 @@ def blackjack_game(deck):
     # Check if player has a Blackjack
     if player_score == 21:
         print("PLAYER HAS A BLACKJACK")
+        player_chips.win_bet()
         quit()
  
     # Check if player busts
     if player_score > 21:
         print("PLAYER BUSTED!!! GAME OVER!!!")
-        quit()
+        player_chips.lose_bet()
+        game_on()
  
     input() 
  
@@ -326,24 +375,33 @@ def blackjack_game(deck):
     # Dealer busts
     if dealer_score > 21:        
         print("DEALER BUSTED!!! YOU WIN!!!") 
-        quit()  
+        player_chips.win_bet()
+        game_on()  
  
     # Dealer gets a blackjack
     if dealer_score == 21:
         print("DEALER HAS A BLACKJACK!!! PLAYER LOSES")
-        quit()
+        player_chips.lose_bet()
+        game_on()
  
     # TIE Game
     if dealer_score == player_score:
-        print("TIE GAME!!!!")
+        print("TIE GAME!!!!\n PUSH")
+        game_on()
  
     # Player Wins
     elif player_score > dealer_score:
-        print("PLAYER WINS!!!")                 
+        print("PLAYER WINS!!!")
+        player_chips.win_bet()      
+        game_on()      
  
     # Dealer Wins
     else:
-        print("DEALER WINS!!!")                 
+        print("DEALER WINS!!!")
+        player_chips.lose_bet()
+        game_on()
+
+                
  
 if __name__ == '__main__':
  
@@ -370,5 +428,6 @@ if __name__ == '__main__':
  
             # Adding card to the deck
             deck.append(Card(suits_values[suit], card, cards_values[card]))
-     
-    blackjack_game(deck)    
+
+if playing == True:
+    blackjack_game(deck)
