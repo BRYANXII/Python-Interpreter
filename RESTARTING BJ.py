@@ -146,6 +146,7 @@ class Chips:
     
     def lose_bet(self):
         self.total -= self.bet
+
         print (f"You've lost {self.bet}, you're new total is {self.total}")
     
     def take_bet(chips):
@@ -162,21 +163,13 @@ class Chips:
                     else:
                         break #breaks out of while loop
 
-def game_on():
-    global playing
-    while playing == True:
-            new_game = input("would you like to play again? Enter Y or N:")
-
-            if new_game[0].lower() == "y":
-                playing = True
-                blackjack_game(deck)
-            else:
-                print('Thank you for playing!')
-                playing = False
+# def game_on():
+   # global playing
+    
  
 # Function for a single game of blackjack
 def blackjack_game(deck):
-
+    global playing
     # Cards for both dealer and player
     player_cards = []
     dealer_cards = []
@@ -244,7 +237,7 @@ def blackjack_game(deck):
     if player_score == 21:
         print("PLAYER HAS A BLACKJACK!!!!")
         player_chips.win_bet()
-        game_on()
+    
  
     clear()
  
@@ -331,7 +324,7 @@ def blackjack_game(deck):
     if player_score > 21:
         print("PLAYER BUSTED!!! GAME OVER!!!")
         player_chips.lose_bet()
-        game_on()
+
  
     input() 
  
@@ -376,30 +369,38 @@ def blackjack_game(deck):
     if dealer_score > 21:        
         print("DEALER BUSTED!!! YOU WIN!!!") 
         player_chips.win_bet()
-        game_on()  
+   
  
     # Dealer gets a blackjack
     if dealer_score == 21:
         print("DEALER HAS A BLACKJACK!!! PLAYER LOSES")
         player_chips.lose_bet()
-        game_on()
+
  
     # TIE Game
     if dealer_score == player_score:
         print("TIE GAME!!!!\n PUSH")
-        game_on()
+
  
     # Player Wins
     elif player_score > dealer_score:
         print("PLAYER WINS!!!")
-        player_chips.win_bet()      
-        game_on()      
+        player_chips.win_bet()           
  
     # Dealer Wins
     else:
         print("DEALER WINS!!!")
         player_chips.lose_bet()
-        game_on()
+    
+    while playing == True:
+            new_game = input("would you like to play again? Enter Y or N:")
+
+            if new_game[0].lower() == "y":
+                playing = True
+                continue
+            else:
+                print('Thank you for playing!')
+                playing = False
 
                 
  
@@ -429,5 +430,4 @@ if __name__ == '__main__':
             # Adding card to the deck
             deck.append(Card(suits_values[suit], card, cards_values[card]))
 
-if playing == True:
-    blackjack_game(deck)
+blackjack_game(deck)
