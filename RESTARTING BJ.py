@@ -170,7 +170,6 @@ player_cards = []
 dealer_cards = []
  
 # Scores for both dealer and player
-    
 player_score = 0
 dealer_score = 0
  
@@ -197,7 +196,7 @@ def blackjack_game(deck):
             if player_chips.total <= 0:
                 print("Not enough chips to continue")
 
-    # Initial dealing for player and dealer
+            # Initial dealing for player and dealer
             while len(player_cards) < 2:
                 # Randomly dealing a card
                 player_card = random.choice(deck)
@@ -401,14 +400,15 @@ def blackjack_game(deck):
                 player_chips.lose_bet()
             
             
-            
+           # Asking Player if they want to play again 
             new_game = input("Would you like to play again? Enter Y or N:")
-
+            
+            # If 'Y', game will restart and variables will be reset for 'new' game. 
             if new_game.lower() == "y":
                 clear()
-                player_score = 0
                 player_cards = []
                 dealer_cards = []
+                player_score = 0
                 dealer_score = 0
                 blackjack_game(deck)
 
@@ -444,4 +444,5 @@ if __name__ == '__main__':
             # Adding card to the deck
             deck.append(Card(suits_values[suit], card, cards_values[card]))
 
+# Starts the Game
 blackjack_game(deck)
