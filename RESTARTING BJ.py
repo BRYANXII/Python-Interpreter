@@ -133,7 +133,7 @@ def print_cards(cards, hidden):
  
 def welcome():
 
-    print('Welcome to Black Jack!')
+    print('Welcome to Black Jack!\nPress "Enter" to navigate the game...')
 
 class Chips:
     
@@ -157,38 +157,43 @@ class Chips:
                 try:
                     chips.bet = int(input("How many chips would you like to bet? "))
                 except: 
-                    print("Sorry please provide an interger")
+                    print("Please provide an interger")
                 else:
                     if chips.bet > chips.total:
                         print(f"Sorry, you do not have enough chips! You have {chips.total}")
                     else:
                         break #breaks out of while loop
 
-# def game_on():
-   # global playing
+# Global playing
 player_chips = Chips()  
 player_cards = []
 dealer_cards = []
  
-    # Scores for both dealer and player
+# Scores for both dealer and player
     
 player_score = 0
 dealer_score = 0
  
 # Function for a single game of blackjack
 def blackjack_game(deck):
+    # Importing global variables 
     global playing
     global player_chips
     global player_cards
     global dealer_cards
     global player_score
     global dealer_score
-    # Cards for both dealer and player
 
-    welcome()
+    # Print Welcome Screen
+    welcome() 
+
+    # Take's Initial Bet
     player_chips.take_bet()
     
+    # Ensures Playing is equal to True
     while playing == True:
+            
+            # Ensures player has enough chips to play 
             if player_chips.total <= 0:
                 print("Not enough chips to continue")
 
